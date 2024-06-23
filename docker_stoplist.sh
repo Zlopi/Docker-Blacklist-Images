@@ -3,8 +3,9 @@
 purge=0
 while IFS=$'\t' read -r id image
 do
-	if grep "^$image:" $0;
+	if grep "^${image}\:" $0;
 	then
+ 		echo "Stop and remove: $id"
 		docker rm -f "$id"
 		purge="1"
 	fi
