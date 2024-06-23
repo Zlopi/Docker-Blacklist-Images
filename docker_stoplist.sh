@@ -10,7 +10,7 @@ do
   		if [ -d "/home/$USER/zelflux/ZelApps/${name}" ]
     		then
 	  		echo "Clean Apps: ${name}"
-	 		sudo umount -l "/home/$USER/zelflux/ZelApps/${name}" && sleep 1
+	 		sudo umount -l "/home/$USER/zelflux/ZelApps/${name}"
 	   		sudo rm -rf "/home/$USER/zelflux/ZelApps/${name}"
 		fi
   		purge="1"
