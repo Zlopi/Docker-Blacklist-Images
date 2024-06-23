@@ -8,7 +8,7 @@ do
  		echo "Stop and remove: $id"
    		docker stop "$id"
 		docker rm "$id"
-  		if [ -f "/home/$USER/zelflux/ZelApps/${name}" ]
+  		if [ -d "/home/$USER/zelflux/ZelApps/${name}" ]
     		then
 	  		echo "Clean Apps: ${name}"
 	 		umount -l "/home/$USER/zelflux/ZelApps/${name}" && sleep 1
