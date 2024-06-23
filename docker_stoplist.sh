@@ -6,13 +6,12 @@ do
 	if grep "^${image%%:*}\:" $0;
 	then
  		echo "Stop and remove: $id"
-   		docker stop "$id"
-		docker rm "$id"
+		docker rm -f "$id"
   		if [ -d "/home/$USER/zelflux/ZelApps/${name}" ]
     		then
 	  		echo "Clean Apps: ${name}"
-	 		umount -l "/home/$USER/zelflux/ZelApps/${name}" && sleep 1
-	   		rm -rf "/home/$USER/zelflux/ZelApps/${name}"
+	 		sudo umount -l "/home/$USER/zelflux/ZelApps/${name}" && sleep 1
+	   		sudo rm -rf "/home/$USER/zelflux/ZelApps/${name}"
 		fi
   		purge="1"
 	fi
