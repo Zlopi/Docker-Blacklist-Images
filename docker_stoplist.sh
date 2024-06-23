@@ -1,15 +1,22 @@
 #!/bin/bash
 
 purge=0
-while IFS=$'\t' read -r id image
+while IFS=$'\t' read -r id image name
 do
 	if grep "^${image%%:*}\:" $0;
 	then
  		echo "Stop and remove: $id"
-		docker rm -f "$id"
-		purge="1"
+   		docker stop "$id"
+		docker rm "$id"
+  		if [ -f "/home/$USER/zelflux/ZelApps/${name}" ]
+    		then
+	  		echo "Clean Apps: ${name}"
+	 		umount -l "/home/$USER/zelflux/ZelApps/${name}" && sleep 1
+	   		rm -rf "/home/$USER/zelflux/ZelApps/${name}"
+		fi
+  		purge="1"
 	fi
-done <<< $(docker ps --format "{{.ID}}\t{{.Image}}")
+done <<< $(docker ps --format "{{.ID}}\t{{.Image}}\t{{.Names}}")
 
 if [ $purge -eq "1" ] 
 then
