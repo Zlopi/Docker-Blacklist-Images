@@ -20,6 +20,7 @@ done <<< $(docker ps --format "{{.ID}}\t{{.Image}}\t{{.Names}}")
 if [ $purge -eq "1" ] 
 then
 	docker system prune -fa
+ 	pm2 restart flux
 fi
 
 exit 0
