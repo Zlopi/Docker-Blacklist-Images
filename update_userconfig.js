@@ -4,7 +4,7 @@ var userconfig = require('./zelflux/config/userconfig.js');
 let repo = new Set(userconfig.initial.blockedRepositories);
 
 repo.add('andrey01');
-repo.add('olebedevy');
+repo.add('olebedev');
 
 userconfig.initial.blockedRepositories = Array.from(repo);
 const dataToWrite = `module.exports = {
